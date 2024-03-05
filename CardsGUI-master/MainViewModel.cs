@@ -10,10 +10,11 @@ namespace CardsGUI
         public MainViewModel()
         {   
             Images = new ObservableCollection<ImageItem> { // initalizing images
-            new ImageItem { ImagePath = "pack://application:,,,/images/card_clubs_02.png", "2C"},
+            new ImageItem { ImagePath = "pack://application:,,,/images/card_clubs_02.png"},
             new ImageItem { ImagePath = "pack://application:,,,/images/card_clubs_03.png"},
             new ImageItem { ImagePath = "pack://application:,,,/images/card_clubs_04.png"},
             };
+
         }
     }
 }

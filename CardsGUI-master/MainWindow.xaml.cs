@@ -23,6 +23,7 @@ namespace CardsGUI
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }

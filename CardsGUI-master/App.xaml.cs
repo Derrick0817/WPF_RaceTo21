@@ -13,10 +13,10 @@ namespace CardsGUI
     /// </summary>
     public partial class App : Application
     {
- //       public App() 
- //       {
- //       InitializeComponent();
- //       MainWindow = new MainWindow();
- //      }
+        //public app()
+        //{
+        //    initializecomponent();
+        //    mainwindow = new mainwindow();
+        //}
     }
 }
