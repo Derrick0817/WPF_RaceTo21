@@ -23,7 +23,12 @@ namespace CardsGUI
         public MainWindow()
         {
             InitializeComponent();
-            
+            //CardTable cardTable = new CardTable();
+            //Game game = new Game(cardTable);
+            //while (game.nextTask != Task.GameOver)
+            //{
+            //    game.DoNextTask();
+            //}
         }
     }
 }
