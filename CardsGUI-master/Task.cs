@@ -14,7 +14,6 @@ namespace CardsGUI
     {
         GetNumberOfPlayers,
         GetNames,
-        IntroducePlayers,
         PlayerTurn,
         CheckForEnd,
         CheckForNextTurn,

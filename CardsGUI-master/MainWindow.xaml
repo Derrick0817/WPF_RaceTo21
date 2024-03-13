@@ -31,24 +31,43 @@
         <Rectangle x:Name="Player1Name" Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="200"/>
         <TextBlock x:Name="Player1" HorizontalAlignment="left" Grid.Row="2" TextWrapping="Wrap" Text="Player 1" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle x:Name="Player1Hand" Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
+        <!--Unsuccessful attempt of data binding using the viewModel-->
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding playerHand[0].cardImages}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding ImagePath}" Width="100" Height="100"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>-->
+        <StackPanel x:Name="Player1Card" Orientation="Horizontal" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="2"/>
         <Rectangle x:Name="Busted_1" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_1_Text" HorizontalAlignment="Right" Grid.Row="2" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="200"/>
         <TextBlock x:Name="Player2" HorizontalAlignment="left" Grid.Row="3" TextWrapping="Wrap" Text="Player 2" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
+        <StackPanel x:Name="Player2Card" Orientation="Horizontal" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="3"/>
         <Rectangle x:Name="Busted_2" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_2_Text" HorizontalAlignment="Right" Grid.Row="3" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="4" Stroke="Black" VerticalAlignment="Top" Width="200"/>
         <TextBlock x:Name="Player3" HorizontalAlignment="left" Grid.Row="4" TextWrapping="Wrap" Text="Player 3" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="4" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
+        <StackPanel x:Name="Player3Card" Orientation="Horizontal" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="4"/>
         <Rectangle x:Name="Busted_3" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="4" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_3_Text" HorizontalAlignment="Right" Grid.Row="4" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="5" Stroke="Black" VerticalAlignment="Top" Width="200"/>
         <TextBlock x:Name="Player4" HorizontalAlignment="left" Grid.Row="5" TextWrapping="Wrap" Text="Player 4" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="5" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
+        <StackPanel x:Name="Player4Card" Orientation="Horizontal" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="5"/>
         <Rectangle x:Name="Busted_4" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="5" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_4_Text" HorizontalAlignment="Right" Grid.Row="5" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 

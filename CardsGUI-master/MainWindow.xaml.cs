@@ -20,28 +20,42 @@ namespace CardsGUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        /*
+        When I was attempting the data binding with view modle, I make the deck be constructed indside view model class,
+        hence methods in Deck are all called through viewModel
+        */
         int numberOfPlayers; // number of players in current game
         List<Player> players = new List<Player>(); // list of objects containing player data
-        CardTable cardTable = new CardTable(); // object in charge of displaying game information
-        Deck deck = new Deck(); // deck of cards
+        //Deck deck = new Deck(); // deck of cards
         int currentPlayer = 0; // current player on list
         public Task nextTask; // keeps track of game state
         private bool cheating = false; // lets you cheat for testing purposes if true
-        List<string> names = new List<string>();
+        private MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            deck.Shuffle();
+            viewModel = new MainViewModel();
+            this.DataContext = viewModel;
+            viewModel.ShuffleDeck();
             nextTask = Task.GetNumberOfPlayers;
         }
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
-            return;
+            players.Clear();
+            currentPlayer = 0;
+            numberOfPlayers = 0;
+            viewModel = new MainViewModel();
+            this.DataContext = viewModel;
+            viewModel.ShuffleDeck();
+            nextTask = Task.GetNumberOfPlayers;
         }
 
-        private void Cheat_Click(object sender, RoutedEventArgs e)
+        private void Cheat_Click(object sender, RoutedEventArgs e) //let the first player win
         {
-            return;
+            if(players.Count >=1)
+            {
+                AnnounceWinner(players[0]);
+            }
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -49,6 +63,7 @@ namespace CardsGUI
         }
         private void Start_Click(object sender, RoutedEventArgs e)
         {
+             //Bad state machine, suppose to be controlled by while loop but I made DoNextTask() mannully
              //while (nextTask != Task.GameOver)
              //{
                  DoNextTask();
@@ -57,18 +72,19 @@ namespace CardsGUI
 
         private void TextEntry_KeyDown(object sender, KeyEventArgs e)
         {
+            //There is only one text entry, when Return key is pressed, it does different logic base on current task
             if (nextTask == Task.GetNumberOfPlayers)
             {
                 if (e.Key == System.Windows.Input.Key.Return)
                 {
-                    if (int.TryParse(TextEntry.Text, out numberOfPlayers) == false)
+                    if (int.TryParse(TextEntry.Text, out numberOfPlayers) == false)//only accept number
                     {
-                        Instruction.Text = "Please enter a valid number!";
+                        Instruction.Text = "Please enter a valid number!"; 
                     }
                     else
                     {
                         numberOfPlayers = int.Parse(TextEntry.Text);
-                        if(numberOfPlayers < 2 || numberOfPlayers >4)
+                        if(numberOfPlayers < 2 || numberOfPlayers >4) // between 2 and 4
                         {
                             Instruction.Text = "Please enter a valid number!";
                             numberOfPlayers = 0;
@@ -88,10 +104,10 @@ namespace CardsGUI
                 if (e.Key == System.Windows.Input.Key.Return)
                 {
 
-                    if (TextEntry.Text != "")
+                    if (TextEntry.Text != "") 
                     {
                         AddPlayer(TextEntry.Text);
-                        switch (currentPlayer)
+                        switch (currentPlayer) //set the name to player's corresponding section
                         {
                             case 0:
                                 Player1.Text = players[currentPlayer].name;
@@ -114,7 +130,7 @@ namespace CardsGUI
                                 break;
 
                         }
-                        Console.WriteLine(currentPlayer + players[currentPlayer].name);
+                        //Console.WriteLine(currentPlayer + players[currentPlayer].name);
                         currentPlayer++;
                         GameState.Text = "Player " + (currentPlayer + 1) + ", What is your name?";
                         TextEntry.Text = "";
@@ -135,13 +151,42 @@ namespace CardsGUI
             }
          }
 
+        /*
+         Button implementations
+         */
+        /*
+         * Hit button will place a card to current player's card section
+         */
         private void Hit1_Click(object sender, RoutedEventArgs e)
         {
             Player player = players[currentPlayer];
             if (player.status == PlayerStatus.active)
             {
-                Card card = deck.DealTopCard();
+                Card card = viewModel.DealTop();
+                //player.cardImages.Add(card);
                 player.cards.Add(card);
+                BitmapImage bitmapImage = new BitmapImage(new Uri(card.ImagePath));
+
+                System.Windows.Controls.Image image = new System.Windows.Controls.Image()
+                {
+                    Source = bitmapImage,
+                    Width = 60
+                };
+                switch (currentPlayer)
+                {
+                    case 0:
+                        Player1Card.Children.Add(image);
+                        break;
+                    case 1:
+                        Player2Card.Children.Add(image);
+                        break;
+                    case 2:
+                        Player3Card.Children.Add(image);
+                        break;
+                    case 3:
+                        Player4Card.Children.Add(image);
+                        break;
+                }
                 player.score = ScoreHand(player);
                 if (player.score > 21)
                 {
@@ -157,12 +202,12 @@ namespace CardsGUI
                             Busted_2_Text.Visibility = Visibility.Visible;
                             break;
                         case 2:
-                            Busted_2.Visibility = Visibility.Visible;
-                            Busted_2_Text.Visibility = Visibility.Visible;
+                            Busted_3.Visibility = Visibility.Visible;
+                            Busted_3_Text.Visibility = Visibility.Visible;
                             break;
                         case 3:
-                            Busted_2.Visibility = Visibility.Visible;
-                            Busted_2_Text.Visibility = Visibility.Visible;
+                            Busted_4.Visibility = Visibility.Visible;
+                            Busted_4_Text.Visibility = Visibility.Visible;
                             break;
                     }
                     
@@ -181,9 +226,43 @@ namespace CardsGUI
             Player player = players[currentPlayer];
             if (player.status == PlayerStatus.active)
             {
-                Card card = deck.DealTopCard();
-                player.cards.Add(card);
-                player.cards.Add(card);
+                Card card_1 = viewModel.DealTop();
+                Card card_2 = viewModel.DealTop();
+                player.cards.Add(card_1);
+                player.cards.Add(card_2);
+                BitmapImage bitmapImage_1 = new BitmapImage(new Uri(card_1.ImagePath));
+
+                System.Windows.Controls.Image image_1 = new System.Windows.Controls.Image()
+                {
+                    Source = bitmapImage_1,
+                    Width = 60
+                };
+                BitmapImage bitmapImage_2 = new BitmapImage(new Uri(card_2.ImagePath));
+
+                System.Windows.Controls.Image image_2 = new System.Windows.Controls.Image()
+                {
+                    Source = bitmapImage_2,
+                    Width = 60
+                };
+                switch (currentPlayer)
+                {
+                    case 0:
+                        Player1Card.Children.Add(image_1);
+                        Player1Card.Children.Add(image_2);
+                        break;
+                    case 1:
+                        Player2Card.Children.Add(image_1);
+                        Player2Card.Children.Add(image_2);
+                        break;
+                    case 2:
+                        Player3Card.Children.Add(image_1);
+                        Player3Card.Children.Add(image_2);
+                        break;
+                    case 3:
+                        Player4Card.Children.Add(image_1);
+                        Player4Card.Children.Add(image_2);
+                        break;
+                }
                 player.score = ScoreHand(player);
                 if (player.score > 21)
                 {
@@ -199,12 +278,12 @@ namespace CardsGUI
                             Busted_2_Text.Visibility = Visibility.Visible;
                             break;
                         case 2:
-                            Busted_2.Visibility = Visibility.Visible;
-                            Busted_2_Text.Visibility = Visibility.Visible;
+                            Busted_3.Visibility = Visibility.Visible;
+                            Busted_3_Text.Visibility = Visibility.Visible;
                             break;
                         case 3:
-                            Busted_2.Visibility = Visibility.Visible;
-                            Busted_2_Text.Visibility = Visibility.Visible;
+                            Busted_4.Visibility = Visibility.Visible;
+                            Busted_4_Text.Visibility = Visibility.Visible;
                             break;
                     }
 
@@ -223,10 +302,56 @@ namespace CardsGUI
             Player player = players[currentPlayer];
             if (player.status == PlayerStatus.active)
             {
-                Card card = deck.DealTopCard();
-                player.cards.Add(card);
-                player.cards.Add(card);
-                player.cards.Add(card);
+                Card card_1 = viewModel.DealTop();
+                Card card_2 = viewModel.DealTop();
+                Card card_3 = viewModel.DealTop();
+                player.cards.Add(card_1);
+                player.cards.Add(card_2);
+                player.cards.Add(card_3);
+                BitmapImage bitmapImage_1 = new BitmapImage(new Uri(card_1.ImagePath));
+
+                System.Windows.Controls.Image image_1 = new System.Windows.Controls.Image()
+                {
+                    Source = bitmapImage_1,
+                    Width = 60
+                };
+                BitmapImage bitmapImage_2 = new BitmapImage(new Uri(card_2.ImagePath));
+
+                System.Windows.Controls.Image image_2 = new System.Windows.Controls.Image()
+                {
+                    Source = bitmapImage_2,
+                    Width = 60
+                };
+                BitmapImage bitmapImage_3 = new BitmapImage(new Uri(card_3.ImagePath));
+
+                System.Windows.Controls.Image image_3 = new System.Windows.Controls.Image()
+                {
+                    Source = bitmapImage_3,
+                    Width = 60
+                };
+                switch (currentPlayer)
+                {
+                    case 0:
+                        Player1Card.Children.Add(image_1);
+                        Player1Card.Children.Add(image_2);
+                        Player1Card.Children.Add(image_3);
+                        break;
+                    case 1:
+                        Player2Card.Children.Add(image_1);
+                        Player2Card.Children.Add(image_2);
+                        Player2Card.Children.Add(image_3);
+                        break;
+                    case 2:
+                        Player3Card.Children.Add(image_1);
+                        Player3Card.Children.Add(image_2);
+                        Player3Card.Children.Add(image_3);
+                        break;
+                    case 3:
+                        Player4Card.Children.Add(image_1);
+                        Player4Card.Children.Add(image_2);
+                        Player4Card.Children.Add(image_3);
+                        break;
+                }
                 player.score = ScoreHand(player);
                 if (player.score > 21)
                 {
@@ -242,12 +367,12 @@ namespace CardsGUI
                             Busted_2_Text.Visibility = Visibility.Visible;
                             break;
                         case 2:
-                            Busted_2.Visibility = Visibility.Visible;
-                            Busted_2_Text.Visibility = Visibility.Visible;
+                            Busted_3.Visibility = Visibility.Visible;
+                            Busted_3_Text.Visibility = Visibility.Visible;
                             break;
                         case 3:
-                            Busted_2.Visibility = Visibility.Visible;
-                            Busted_2_Text.Visibility = Visibility.Visible;
+                            Busted_4.Visibility = Visibility.Visible;
+                            Busted_4_Text.Visibility = Visibility.Visible;
                             break;
                     }
 
@@ -454,7 +579,7 @@ namespace CardsGUI
             int highScore = 0;
             foreach (var player in players)
             {
-                cardTable.ShowHand(player);
+                //cardTable.ShowHand(player);
                 if (player.status == PlayerStatus.win) // someone hit 21
                 {
                     return player;

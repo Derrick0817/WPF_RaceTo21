@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
 
 namespace CardsGUI
 {
@@ -13,10 +15,12 @@ namespace CardsGUI
 		public List<Card> cards = new List<Card>();
 		public PlayerStatus status = PlayerStatus.active;
 		public int score;
+		public ObservableCollection<Card> cardImages { get; set; } //failed attempt to use view model
 
 		public Player(string n)
 		{
 			name = n;
+			cardImages = new ObservableCollection<Card>();
 		}
 
 		/// <summary>

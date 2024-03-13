@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq; // currently only needed if we use alternate shuffle method
+using System.Linq; 
 
 namespace CardsGUI
 {
@@ -11,6 +11,11 @@ namespace CardsGUI
     {
         List<Card> cards = new List<Card>();
 
+        public List<Card> Cards
+        {
+            get { return cards; }
+        }
+
         /// <summary>
         /// Constructor for an ordered deck of cards.
         /// </summary>
@@ -18,6 +23,7 @@ namespace CardsGUI
         {
             Console.WriteLine("*********** Building deck...");
             string[] suits = { "S", "H", "C", "D" };
+            string basePath = "pack://application:,,,/images/";
 
             for (int cardVal = 1; cardVal <= 13; cardVal++)
             {
@@ -25,6 +31,8 @@ namespace CardsGUI
                 {
                     string cardName;
                     string cardLongName;
+                    string imageName;
+
 
                     switch (cardVal)
                     {
@@ -65,7 +73,9 @@ namespace CardsGUI
                             cardLongName += "Diamonds";
                             break;
                     }
-                    cards.Add(new Card { ID = cardName + cardSuit, name = cardLongName });
+
+                    imageName = basePath + cardSuit + cardName + ".png";
+                    cards.Add(new Card { ID = cardName + cardSuit, name = cardLongName, ImagePath = imageName });
                 }
             }
         }
@@ -77,15 +87,8 @@ namespace CardsGUI
         {
             Console.WriteLine("Shuffling Cards...");
 
-            Random rng = new Random(); // rng is short for "Random Number Generator"
+            Random rng = new Random(); 
 
-            // one-line method that uses Linq
-            // (only uncomment this and comment out the multi-line approach
-            // after you understand this approach!):
-            // cards = cards.OrderBy(a => rng.Next()).ToList();
-
-            // multi-line approach that uses Array notation on a list!
-            // (this should be easier to understand):
             for (int i = 0; i < cards.Count; i++)
             {
                 Card tmp = cards[i];
@@ -99,16 +102,11 @@ namespace CardsGUI
         /// <summary>
         /// Shows all cards. Kinda hacky. See comment below.
         /// </summary>
-        /* Maybe we can make a variation on this that's more useful,
-         * but at the moment it's just really to confirm that our 
-         * shuffling method(s) worked! And normally we want our card 
-         * table to do all of the displaying, don't we?!
-         */
         public void ShowAllCards()
         {
             for (int i = 0; i < cards.Count; i++)
             {
-                Console.Write(i + ":" + cards[i].ID); // NOTE: a list property can be accessed by an index just like an Array!
+                Console.Write(i + ":" + cards[i].ID); 
                 if (i < cards.Count - 1)
                 {
                     Console.Write(" ");
@@ -126,9 +124,9 @@ namespace CardsGUI
         public Card DealTopCard()
         {
             Card card = cards[cards.Count - 1];
-            cards.RemoveAt(cards.Count - 1);
-            // Console.WriteLine("I'm giving you " + card);
+            cards.RemoveAt(cards.Count - 1);       
             return card;
         }
+
     }
 }
