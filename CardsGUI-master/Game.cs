@@ -45,7 +45,7 @@ namespace CardsGUI
         /// </summary>
         public void DoNextTask()
         {
-            Console.WriteLine("================================"); // this line should be elsewhere right?
+     
             if (nextTask == Task.GetNumberOfPlayers)
             {
                 numberOfPlayers = cardTable.GetNumberOfPlayers();
@@ -98,7 +98,7 @@ namespace CardsGUI
                 if (!CheckActivePlayers())
                 {
                     Player winner = DoFinalScoring();
-                    cardTable.AnnounceWinner(winner);
+                    //cardTable.AnnounceWinner(winner);
                     nextTask = Task.GameOver;
                 }
                 else
@@ -127,7 +127,7 @@ namespace CardsGUI
                     players.Remove(player);
                     if (players.Count == 1)
                     {
-                        cardTable.AnnounceWinner(players[0]);
+                        //cardTable.AnnounceWinner(players[0]);
                         nextTask = Task.GameOver;
                     }
 

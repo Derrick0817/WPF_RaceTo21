@@ -107,21 +107,6 @@ namespace CardsGUI
             }
         }
 
-
-        public void AnnounceWinner(Player player)
-        {
-            if (player != null)
-            {
-                Console.WriteLine(player.name + " wins!");
-            }
-            else
-            {
-                Console.WriteLine("Everyone busted!");
-            }
-            Console.Write("Press <Enter> to exit... ");
-            while (Console.ReadKey().Key != ConsoleKey.Enter) { }
-        }
-
         public bool AskIfContinue(Player player)
         {
             while (true)

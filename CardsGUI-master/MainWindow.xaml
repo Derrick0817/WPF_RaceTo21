@@ -24,40 +24,45 @@
             <MenuItem Header="Exit" FontSize="18" Click="Exit_Click"/>
         </Menu>
 
-        <TextBlock x:Name="GameState" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="How Many Players?" Width="500" FontWeight="Bold" TextAlignment="Center" FontSize="24" Visibility="Visible"/>
-        <TextBlock x:Name="Instruction" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Enter a number between 2-4!" VerticalAlignment="Top" FontSize="20" Visibility="Visible"/>
-        <TextBox x:Name="TextEntry" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" KeyDown="TextEntry_KeyDown" FontSize="14" Visibility="Visible"/>
+        <TextBlock x:Name="GameState" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="How Many Players?" Width="500" FontWeight="Bold" TextAlignment="Center" FontSize="24" Visibility="Hidden"/>
+        <TextBlock x:Name="Instruction" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Enter a number between 2-4!" VerticalAlignment="Top" FontSize="20" Visibility="Hidden"/>
+        <TextBox x:Name="TextEntry" HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" KeyDown="TextEntry_KeyDown" FontSize="14" Visibility="Hidden"/>
 
         <Rectangle x:Name="Player1Name" Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="Player1" HorizontalAlignment="left" Grid.Row="2" TextWrapping="Wrap" Text="Player 1" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Visible"/>
+        <TextBlock x:Name="Player1" HorizontalAlignment="left" Grid.Row="2" TextWrapping="Wrap" Text="Player 1" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle x:Name="Player1Hand" Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
         <Rectangle x:Name="Busted_1" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_1_Text" HorizontalAlignment="Right" Grid.Row="2" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="Player2" HorizontalAlignment="left" Grid.Row="3" TextWrapping="Wrap" Text="Player 2" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Visible"/>
+        <TextBlock x:Name="Player2" HorizontalAlignment="left" Grid.Row="3" TextWrapping="Wrap" Text="Player 2" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
         <Rectangle x:Name="Busted_2" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_2_Text" HorizontalAlignment="Right" Grid.Row="3" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="4" Stroke="Black" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="Player3" HorizontalAlignment="left" Grid.Row="4" TextWrapping="Wrap" Text="Player 3" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Visible"/>
+        <TextBlock x:Name="Player3" HorizontalAlignment="left" Grid.Row="4" TextWrapping="Wrap" Text="Player 3" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="4" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
         <Rectangle x:Name="Busted_3" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="4" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_3_Text" HorizontalAlignment="Right" Grid.Row="4" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="132" Grid.Row="5" Stroke="Black" VerticalAlignment="Top" Width="200"/>
-        <TextBlock x:Name="Player4" HorizontalAlignment="left" Grid.Row="5" TextWrapping="Wrap" Text="Player 4" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Visible"/>
+        <TextBlock x:Name="Player4" HorizontalAlignment="left" Grid.Row="5" TextWrapping="Wrap" Text="Player 4" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="20" Height="44" Margin="0,0,0,38" VerticalAlignment="Bottom" Visibility="Hidden"/>
         <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="5" Stroke="Black" VerticalAlignment="Top" Width="1292"/>
         <Rectangle x:Name="Busted_4" Fill="Black" HorizontalAlignment="Left" Height="132" Margin="200,0,0,0" Grid.Row="5" Stroke="Black" VerticalAlignment="Top" Width="1292" Opacity="0.5" Visibility="Hidden"/>
         <TextBlock x:Name="Busted_4_Text" HorizontalAlignment="Right" Grid.Row="5" TextWrapping="Wrap" Width="200" FontWeight="Bold" TextAlignment="Center" FontSize="30" Height="112" Margin="0,0,525,20" VerticalAlignment="Bottom" Visibility="Hidden"><Run/><LineBreak/><Run Text="Busted"/></TextBlock>
 
-        <Button Content="Hit" HorizontalAlignment="Center" Margin="-500,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Hit_Click" Visibility="Hidden"/>
-        <Button Content="Stand" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Stand_Click" Visibility="Hidden"/>
-        <Button Content="Fold" HorizontalAlignment="Center" Margin="500,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Fold_Click" Visibility="Hidden"/>
 
-        <Button Content="Yes" HorizontalAlignment="Center" Margin="-300,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Yes_Click" Visibility="Hidden"/>
-        <Button Content="No" HorizontalAlignment="Center" Margin="300,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="No_Click" Visibility="Hidden"/>
+        <Button x:Name="Hit1" Content="Hit x1" HorizontalAlignment="Center" Margin="-800,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Hit1_Click" Visibility="Hidden"/>
+        <Button x:Name="Hit2" Content="Hit x2" HorizontalAlignment="Center" Margin="-400,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Hit2_Click" Visibility="Hidden"/>
+        <Button x:Name="Hit3" Content="Hit x3" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Hit3_Click" Visibility="Hidden"/>
+        <Button x:Name="Stand" Content="Stand" HorizontalAlignment="Center" Margin="400,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Stand_Click" Visibility="Hidden"/>
+        <Button x:Name="Fold" Content="Fold" HorizontalAlignment="Center" Margin="800,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Fold_Click" Visibility="Hidden"/>
+
+        <Button x:Name="Yes" Content="Yes" HorizontalAlignment="Center" Margin="-300,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="Yes_Click" Visibility="Hidden"/>
+        <Button x:Name="No" Content="No" HorizontalAlignment="Center" Margin="300,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="142" Height="50" Click="No_Click" Visibility="Hidden"/>
+
+        <Button x:Name="Start_Button" Content="Start" HorizontalAlignment="Center" Margin="0,50,0,0" Grid.Row="1" VerticalAlignment="Top" Width="250" Height="100" Visibility="Visible" Click="Start_Click" FontSize="25"/>
     </Grid>
 
 </Window>
